@@ -1,5 +1,8 @@
+# Run the dependencies by using the following command
+### `npm i`
+
 # Run the app by using the following command
 ### `npm start`
 
-# Launches the test runner
+# Launch the test runner by using the following command
 ### `npm test`
