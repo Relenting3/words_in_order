@@ -1,0 +1,22 @@
+[
+  {
+    "sentence": "The keys are in the room",
+    "words": ["room", "keys", "The", "in", "the", "are"]
+  },
+  {
+    "sentence": "That is a phone",
+    "words": ["is", "phone", "a", "That"]
+  },
+  {
+    "sentence": "Does he play basketball?",
+    "words": ["basketball?", "play", "Does", "he"]
+  },
+  {
+    "sentence": "You have some schoolwork to do",
+    "words": ["schoolwork", "You", "do", "some", "have", "to"]
+  },
+  {
+    "sentence": "Venezuela it's a beautiful country",
+    "words": ["beautiful", "it's", "Venezuela", "country", "a"]
+  }
+]
