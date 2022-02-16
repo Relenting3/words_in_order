@@ -19,22 +19,29 @@ export const Words = () => {
     setSentence(prev => prev = [])
   }
 
+  function gameFinished(state){
+    if(state === 'won'){
+      handleIsGameFinished('won', 'Congratulations! You have won')
+    } else{
+      handleIsGameFinished('lost', 'You lost!')
+    }
+    return navigate("/finished")
+  }
+
+  function checkLifes(){
+    let _lifes = lifes
+    _lifes--
+    if(_lifes === 0) { return gameFinished('lost') }
+    handleLifes(_lifes)
+  }
+
   function handleWord(word){
     let _sentence = [...sentence]
     _sentence.push(word)
     if(_sentence.length === words.length){
       let sentenceStr = _sentence.join(' ')
-      if(sentenceStr === randomSentence.sentence){
-        handleIsGameFinished('won', 'Congratulations! You have won')
-        return navigate("/finished")
-      }
-      let _lifes = lifes
-      _lifes--
-      if(_lifes === 0){
-        handleIsGameFinished('lost', 'You lost!')
-        return navigate("/finished")
-      }
-      handleLifes(_lifes)
+      if(sentenceStr === randomSentence.sentence){ return gameFinished('won')}
+      checkLifes()
       let incorrect = new Audio("/sound/incorrect.mp3")
       incorrect.play()
       return reloadWord()
@@ -47,7 +54,7 @@ export const Words = () => {
       let isWordInSentence = sentence.find(element => element === value)
       return <ButtonGeneral 
         key={`${value}_${index}`}
-        className="m-1"
+        className="m-words"
         bg="#F2F3F4"
         fontSize="1.75rem"
         onClick={()=>{handleWord(value)}} 
@@ -56,7 +63,7 @@ export const Words = () => {
         {value}
       </ButtonGeneral>
     })
-    return <Row100 className="flex-wrap">
+    return <Row100 className="flex-wrap mt-3">
       {_words}
     </Row100>
   }
@@ -75,9 +82,9 @@ export const Words = () => {
   function render(){
     let expressions = []
     expressions.push(
-      <FlexRelative key="description" column="true" width={'40%'} className="mt-25-xs">
-        <div className="d-flex flex-column px-3">
-          <Row100 className="justify-content-end">
+      <FlexRelative key="description" column="true" width={'40%'} className="mt-25-xs mt-5">
+        <div className="d-flex flex-column px-words">
+          <Row100 className="justify-content-end mb-0">
             <IconBtn fill={'#fff'} onClick={reloadWord}><ReloadIcon /></IconBtn>
           </Row100>
           <Sentence />

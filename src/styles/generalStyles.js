@@ -19,6 +19,8 @@ const shake = keyframes`
 export const TextXl = styled.p`
 	color: ${props => props.first ? props.theme.colors.first : props.second ? props.theme.colors.second : props.white ? 'white' : props.theme.colors.text};
 	font-size: calc(2.5rem + 0.5vw);
+	${props => props.ff ? `font-family: Poppins-SemiBold;`:''}
+	${props => props.ls ? `letter-spacing: ${props.ls};`:''}
 `
 export const TextLg = styled.p`
 	color: ${props => props.first ? props.theme.colors.first : props.second ? props.theme.colors.second : props.white ? 'white' : props.theme.colors.text};
@@ -27,11 +29,12 @@ export const TextLg = styled.p`
 export const TextMd = styled.p`
 	color: ${props => props.first ? props.theme.colors.first : props.second ? props.theme.colors.second : props.white ? 'white' : props.theme.colors.text};
 	font-size: calc(1.5rem + 0.4vw);
-  line-height: 3rem;
+  ${props => props.lh ? `line-height: ${props.lh};`:''}
+	${props => props.ls ? `letter-spacing: ${props.ls};`:''}
 `
 export const TextSm = styled.p`
 	color: ${props => props.first ? props.theme.colors.first : props.second ? props.theme.colors.second : props.white ? 'white' : props.theme.colors.text};
-	font-size: calc(1rem + 0.3vw);
+	font-size: calc(${props => props.fontBase ? props.fontBase : '1rem'} + 0.3vw);
 `
 export const TextXs = styled.p`
 	color: ${props => props.first ? props.theme.colors.first : props.second ? props.theme.colors.second : props.white ? 'white' : props.theme.colors.text};
@@ -64,9 +67,9 @@ export const Surface = styled.div`
 	height: min-content;
 	flex-direction: column;
 	background-color: ${props => props.bg ? props.bg : 'white'};
-	padding: 1.5rem;
-	border-radius: 7px;
-	box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+	padding: 1.5rem 1.5rem 1.5rem 2rem;
+	border-radius: 14px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 	${props => props.width ? `width: ${props.width};`:''}
 	${props => props.minHeight ? `min-height: ${props.minHeight};`:''}
 `
@@ -115,17 +118,18 @@ export const ButtonGeneral = styled.button`
   border: 1px solid ${props => props.borderColor ? props.borderColor : 'transparent'};
   font-size: ${props => props.fontSize ? props.fontSize : '1rem'};
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 9px;
   height: min-content;
   width: fit-content;
-  padding: 6px 16px;
+  padding: 9px 12px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   transition: all .1s ease-in;
   &:hover{
     background-color: ${props => props.first ? props.theme.colors.buttons.hoverFirst : props.theme.colors.lightGray};
 		transform: scale(1.1);
 	}
   &:disabled{
-    opacity: 0.5;
+		color: ${props => `${props.theme.colors.textWithOpacity}`};
 		cursor: initial;
   }
 `

@@ -13,8 +13,8 @@ export const Logo = (props) => {
       <Fragment key="logo">
         { windowSize.width >= 768 ? 
           <div className="d-flex flex-column">
-            <TextMd first="true"><b>Story title</b></TextMd>
-            <TextSm first="true" className="mt-2">Episode 1</TextSm>
+            <TextMd lh="3.3rem" first="true"><b>Story Title</b></TextMd>
+            <TextSm fontBase="1.35rem" first="true">Episode 1</TextSm>
           </div>
         :
           <div className="d-flex justify-content-center align-items-center mr-4">

@@ -11,10 +11,10 @@ export const Lifes = () => {
     let expressions = [], hearts = []
     for(let i = 1; i <= 5; i++){
       if(lifes < i){
-        hearts.push(
+        hearts.unshift(
           <HeartUnfilledIcon 
             key={`heart_${i}`} 
-            style={{marginRight:'.15rem',width: '24px', height: '24px', fill: '#f40707'}} 
+            style={{marginRight:'.35rem',width: '20px', height: '20px', fill: '#CC0000'}} 
           />
         )
       } else {
@@ -22,7 +22,7 @@ export const Lifes = () => {
           <HeartFilledIcon 
             key={`heart_${i}`}  
             data-testid="heart_filled" 
-            style={{marginRight:'.15rem',width: '24px', height: '24px', fill: '#f40707'}} 
+            style={{marginRight:'.35rem',width: '20px', height: '20px', fill: '#CC0000'}} 
           />
         )
       }

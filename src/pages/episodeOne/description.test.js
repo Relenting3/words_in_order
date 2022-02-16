@@ -18,7 +18,7 @@ describe('Description component', () => {
     container = null;
   })
 
-  it('render with two p tags', () => {
+  it('render with one p tag and one div tag', () => {
     render(<Theme><Description /></Theme>)
     let tags = []
     for(const values of screen.getAllByTestId('description')[0].childNodes[0].childNodes){
@@ -26,6 +26,6 @@ describe('Description component', () => {
         values.nodeName
       )
     }
-    expect(tags).toEqual(['P','P'])
+    expect(tags).toEqual(['P','DIV'])
   })
 })
